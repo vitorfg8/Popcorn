@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Popcorn</string>
+    <string name="onboarding_title">A jornada pelo entretenimento começa aqui</string>
+    <string name="onboarding_text">Desde sucessos de bilheteria até gemas escondidas, você está prestes a mergulhar em um mundo de entretenimento inesquecível.</string>
+    <string name="login">Login</string>
+    <string name="skip">Pular</string>
 </resources>

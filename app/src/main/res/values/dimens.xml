@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spacing_1" type="dimen">4dp</item>
+    <item name="spacing_2" type="dimen">8dp</item>
+    <item name="spacing_3" type="dimen">16dp</item>
+    <item name="spacing_4" type="dimen">24dp</item>
+    <item name="spacing_5" type="dimen">32dp</item>
+    <item name="spacing_6" type="dimen">40dp</item>
+    <item name="spacing_7" type="dimen">48dp</item>
+    <item name="spacing_8" type="dimen">56dp</item>
+    <item name="spacing_9" type="dimen">64dp</item>
+    <item name="spacing_10" type="dimen">72dp</item>
+    <item name="spacing_11" type="dimen">80dp</item>
+    <item name="spacing_12" type="dimen">88dp</item>
+    <item name="spacing_13" type="dimen">96dp</item>
+</resources>
