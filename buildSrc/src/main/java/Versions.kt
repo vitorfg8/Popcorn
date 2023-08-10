@@ -11,4 +11,7 @@ object Versions {
     const val junit = "4.13.2"
     const val androidTestJunit = "1.1.5"
     const val espresso = "3.5.1"
+
+    // Firebase
+    const val firebaseBom = "32.2.2"
 }
