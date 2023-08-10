@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.github.vitorfg8.popcorn"
-    compileSdk = 33
+    namespace = AppConfig.namespace
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.github.vitorfg8.popcorn"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,12 +36,16 @@ android {
 }
 
 dependencies {
+    // Core
+    implementation(Dependencies.coreKTX)
+    implementation(Dependencies.appCompat)
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // UI
+    implementation(Dependencies.material)
+    implementation(Dependencies.constraintLayout)
+
+    // Tests
+    testImplementation(Dependencies.junit)
+    androidTestImplementation(Dependencies.androidTestJunit)
+    androidTestImplementation(Dependencies.espresso)
 }
