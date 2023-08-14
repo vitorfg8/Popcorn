@@ -28,5 +28,6 @@
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
         <item name="fontFamily">@font/inter</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 </resources>
