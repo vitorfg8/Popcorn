@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1C27"
     android:paddingBottom="@dimen/spacing_3"
     tools:context=".MainActivity">
 
@@ -38,7 +37,6 @@
         android:layout_marginBottom="@dimen/spacing_3"
         android:text="@string/onboarding_title"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/textViewOnboarding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,7 +49,6 @@
         android:layout_marginHorizontal="@dimen/spacing_3"
         android:layout_marginBottom="@dimen/spacing_3"
         android:text="@string/onboarding_text"
-        android:textColor="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -73,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_3"
-        style="@style/Theme.Popcorn.SecondaryButton"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:text="@string/skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
