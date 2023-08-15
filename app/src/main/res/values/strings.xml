@@ -4,4 +4,11 @@
     <string name="onboarding_text">Desde sucessos de bilheteria até gemas escondidas, você está prestes a mergulhar em um mundo de entretenimento inesquecível.</string>
     <string name="login">Login</string>
     <string name="skip">Pular</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_title">Faça login com sua conta do TMDB</string>
+    <string name="login_text">Conecte-se ao universo do entretenimento: inicie sessão utilizando sua conta do TMDB e embarque em uma jornada pelo cinema e da televisão</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="register_text">Não tem uma conta? Cadastre-se</string>
 </resources>

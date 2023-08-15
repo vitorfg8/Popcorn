@@ -1,79 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/spacing_3"
-    tools:context=".MainActivity">
+    tools:context=".login.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageOnboarding"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:name="com.github.vitorfg8.popcorn.login.OnboardingFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_onboarding"
-        app:layout_constraintBottom_toTopOf="@+id/textViewOnboardingTitle"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:importantForAccessibility="no"
-        android:src="@drawable/gradient"
-        app:layout_constraintBottom_toBottomOf="@id/imageOnboarding"
-        app:layout_constraintTop_toTopOf="@id/imageOnboarding" />
-
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewOnboardingTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_3"
-        android:layout_marginBottom="@dimen/spacing_3"
-        android:text="@string/onboarding_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        app:layout_constraintBottom_toTopOf="@id/textViewOnboarding"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewOnboarding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_3"
-        android:layout_marginBottom="@dimen/spacing_3"
-        android:text="@string/onboarding_text"
-        app:layout_constraintBottom_toTopOf="@id/buttonLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_3"
-        style="@style/Theme.Popcorn.PrimaryButton"
-        android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/buttonContinue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonContinue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_3"
-        style="@style/Widget.Material3.Button.TonalButton"
-        android:text="@string/skip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

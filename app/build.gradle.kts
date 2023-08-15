@@ -49,9 +49,4 @@ dependencies {
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidTestJunit)
     androidTestImplementation(Dependencies.espresso)
-
-    // Firebase
-    implementation(platform(Dependencies.firebaseBom))
-    implementation(Dependencies.firebaseAuth)
-    implementation(Dependencies.firebaseFirestore)
 }
