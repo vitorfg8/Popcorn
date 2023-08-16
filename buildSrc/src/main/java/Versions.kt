@@ -11,4 +11,13 @@ object Versions {
     const val junit = "4.13.2"
     const val androidTestJunit = "1.1.5"
     const val espresso = "3.5.1"
+
+    // Koin
+    const val koin = "3.4.3"
+
+    // Glide
+    const val glide = "4.15.1"
+
+    // Retrofit
+    const val retrofit = "2.9.0"
 }
