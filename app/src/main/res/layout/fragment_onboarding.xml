@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/spacing_3"
-    tools:context=".login.OnboardingFragment">
+    tools:context=".login.ui.OnboardingFragment">
 
     <ImageView
         android:id="@+id/imageOnboarding"

@@ -11,4 +11,10 @@ object Versions {
     const val junit = "4.13.2"
     const val androidTestJunit = "1.1.5"
     const val espresso = "3.5.1"
+
+    // Jetpack Navigation
+    const val jetpackNavigation = "2.6.0"
+
+    // Koin
+    const val koin = "3.4.3"
 }

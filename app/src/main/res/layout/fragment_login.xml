@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/spacing_3"
-    tools:context=".login.LoginFragment">
+    tools:context=".login.ui.LoginFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
