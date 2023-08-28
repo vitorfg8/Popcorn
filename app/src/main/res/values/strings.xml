@@ -11,4 +11,6 @@
     <string name="e_mail">E-mail</string>
     <string name="password">Senha</string>
     <string name="register_text">Não tem uma conta? Cadastre-se</string>
+    <string name="default_error_message">Ops algo deu errado …</string>
+    <string name="home_title">O que você quer assistir?</string>
 </resources>
