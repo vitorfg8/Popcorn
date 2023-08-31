@@ -7,10 +7,11 @@
     tools:context=".home.trends.ui.TrendsFragment">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:paddingStart="@dimen/spacing_11"
-        android:paddingEnd="@dimen/spacing_11"
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:paddingStart="@dimen/spacing_8"
+        android:paddingEnd="@dimen/spacing_8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

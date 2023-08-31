@@ -10,7 +10,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val trendsFragment = TrendsFragment.newInstance("", "") //TODO
+        val trendsFragment = TrendsFragment.newInstance()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, trendsFragment)
             .commit()

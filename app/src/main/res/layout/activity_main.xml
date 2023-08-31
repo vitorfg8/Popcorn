@@ -7,7 +7,6 @@
     tools:context=".login.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainer"
         android:name="com.github.vitorfg8.popcorn.login.OnboardingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

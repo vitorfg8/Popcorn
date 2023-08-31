@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_margin="@dimen/spacing_3">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,14 +20,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/gradient"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewMediaTitle"
@@ -44,16 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@tools:sample/lorem/random" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageVotes"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="@dimen/spacing_4"
-            android:src="@drawable/ribbon_outline_icon"
-            app:layout_constraintBottom_toBottomOf="@id/textViewVotes"
-            app:layout_constraintStart_toEndOf="@id/textMediaType"
-            app:layout_constraintTop_toTopOf="@id/textViewVotes" />
-
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textMediaType"
@@ -61,6 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_2"
             android:layout_marginBottom="@dimen/spacing_2"
+            android:drawableStart="@drawable/play_circle"
+            android:drawablePadding="@dimen/spacing_1"
             android:ellipsize="end"
             android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -75,8 +58,10 @@
             android:layout_marginBottom="@dimen/spacing_2"
             android:ellipsize="end"
             android:maxLines="1"
+            android:drawableStart="@drawable/ribbon_outline_icon"
+            android:drawablePadding="@dimen/spacing_1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageVotes"
+            app:layout_constraintStart_toEndOf="@id/textMediaType"
             tools:text="9.9" />
 
 

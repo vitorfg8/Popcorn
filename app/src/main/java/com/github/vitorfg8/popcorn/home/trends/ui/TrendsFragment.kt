@@ -6,69 +6,98 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.github.vitorfg8.popcorn.R
-import com.github.vitorfg8.popcorn.home.trends.presentation.Result
-import com.github.vitorfg8.popcorn.home.trends.presentation.TrendsViewModel
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
+import com.github.vitorfg8.popcorn.databinding.FragmentTrendsBinding
+import com.github.vitorfg8.popcorn.home.trends.ui.viewmodel.Result
+import com.github.vitorfg8.popcorn.home.trends.ui.viewmodel.TrendsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.abs
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TrendsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TrendsFragment : Fragment() {
 
     private val trendsViewModel by viewModel<TrendsViewModel>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-/*            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)*/
-        }
-    }
+    private lateinit var infinitePageAdapter: InfinitePageAdapter
+    private var binding: FragmentTrendsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        binding = FragmentTrendsBinding.inflate(inflater, container, false)
         observeTrendsList()
-        return inflater.inflate(R.layout.fragment_trends, container, false)
+        return binding?.root
+    }
+
+    private fun setUpTransformer(viewPager: ViewPager2) {
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(40))
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.8f + r * 0.14f
+        }
+        viewPager.setPageTransformer(transformer)
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+
+    private fun onInfinitePageChangeCallback(listSize: Int) {
+        binding?.viewPager?.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+
+                if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                    when (binding?.viewPager?.currentItem) {
+                        listSize - 1 -> binding?.viewPager?.setCurrentItem(1, false)
+                        0 -> binding?.viewPager?.setCurrentItem(listSize - 2, false)
+                    }
+                }
+            }
+        })
     }
 
     private fun observeTrendsList() {
-        trendsViewModel.trends.observe(viewLifecycleOwner) {
-            when (it) {
+        trendsViewModel.trends.observe(viewLifecycleOwner) { result ->
+            when (result) {
                 is Result.Success -> {
-                    Log.d("teste", "observeTrendsList: ${it.list}")
+                    binding?.viewPager?.let {
+                        setupAdapter(result, it)
+                        setupViewPager(it)
+                        setUpTransformer(it)
+                    }
                 }
 
                 is Result.Error -> {
-                    Log.e("teste", "observeTrendsList: $it")
+                    Log.e("teste", "observeTrendsList: $result")
                 }
             }
         }
     }
 
+    private fun setupViewPager(viewPager: ViewPager2) {
+        viewPager.offscreenPageLimit = 3
+        viewPager.clipToPadding = false
+        viewPager.clipChildren = false
+        viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+    }
+
+    private fun setupAdapter(result: Result.Success, viewPager: ViewPager2) {
+        infinitePageAdapter = InfinitePageAdapter(result.list)
+        viewPager.adapter = infinitePageAdapter
+        viewPager.currentItem = 1
+        onInfinitePageChangeCallback(result.list.size + 2)
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TrendsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TrendsFragment().apply {
-                arguments = Bundle().apply {
-/*                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)*/
-                }
-            }
+        fun newInstance() = TrendsFragment()
     }
 }
