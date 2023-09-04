@@ -1,7 +1,6 @@
 package com.github.vitorfg8.popcorn.home.trends.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,9 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.github.vitorfg8.popcorn.databinding.FragmentTrendsBinding
-import com.github.vitorfg8.popcorn.home.trends.ui.viewmodel.Result
+import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
 import com.github.vitorfg8.popcorn.home.trends.ui.viewmodel.TrendsViewModel
+import com.github.vitorfg8.popcorn.utils.State
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -65,19 +65,21 @@ class TrendsFragment : Fragment() {
     }
 
     private fun observeTrendsList() {
-        trendsViewModel.trends.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Result.Success -> {
+        trendsViewModel.trends.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is State.Success -> {
                     binding?.viewPager?.let {
-                        setupAdapter(result, it)
+                        setupAdapter(state.data, it)
                         setupViewPager(it)
                         setUpTransformer(it)
                     }
                 }
 
-                is Result.Error -> {
-                    Log.e("teste", "observeTrendsList: $result")
+                is State.Error -> {
+                    //TODO
                 }
+
+                is State.Loading -> {} //TODO
             }
         }
     }
@@ -89,15 +91,10 @@ class TrendsFragment : Fragment() {
         viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
     }
 
-    private fun setupAdapter(result: Result.Success, viewPager: ViewPager2) {
-        infinitePageAdapter = InfinitePageAdapter(result.list)
+    private fun setupAdapter(trends: List<TrendDataUi>, viewPager: ViewPager2) {
+        infinitePageAdapter = InfinitePageAdapter(trends)
         viewPager.adapter = infinitePageAdapter
         viewPager.currentItem = 1
-        onInfinitePageChangeCallback(result.list.size + 2)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = TrendsFragment()
+        onInfinitePageChangeCallback(trends.size + 2)
     }
 }
