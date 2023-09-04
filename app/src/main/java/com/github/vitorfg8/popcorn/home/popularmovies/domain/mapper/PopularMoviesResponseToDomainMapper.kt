@@ -8,7 +8,7 @@ fun PopularMoviesResponse.toDomain(): List<PopularMovie> {
         PopularMovie(
             id = it.id,
             posterPath = it.posterPath.orEmpty(),
-            title = it.title ?: it.originalTitle.orEmpty(),
+            name = it.title ?: it.originalTitle.orEmpty(),
         )
     }
 }

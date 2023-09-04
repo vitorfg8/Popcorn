@@ -8,7 +8,7 @@ fun List<PopularMovie>.toUi(): List<PopularMovieDataUi> {
         PopularMovieDataUi(
             posterUrl = getPosterUrl(it.posterPath),
             id = it.id,
-            title = it.title,
+            title = it.name,
         )
     }
 }

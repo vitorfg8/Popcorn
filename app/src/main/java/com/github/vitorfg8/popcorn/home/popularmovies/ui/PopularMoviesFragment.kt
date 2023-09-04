@@ -26,19 +26,21 @@ class PopularMoviesFragment : Fragment() {
     private fun observePopularMoviesList() {
         popularMoviesViewModel.popularMovies.observe(viewLifecycleOwner) { state ->
             when (state) {
+                is State.Loading -> {
+                    // TODO:
+                }
+
                 is State.Success -> {
                     val popularMoviesAdapter = PopularMoviesAdapter {
-
+                        //TODO
                     }
                     popularMoviesAdapter.submitList(state.data)
-                    binding?.recyclerTvSeries?.adapter = popularMoviesAdapter
+                    binding?.recyclerMovies?.adapter = popularMoviesAdapter
                 }
 
                 is State.Error -> {
                     //TODO
                 }
-
-                else -> {} // TODO:
             }
         }
     }

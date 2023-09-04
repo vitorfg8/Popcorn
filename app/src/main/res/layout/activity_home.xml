@@ -49,9 +49,22 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerMovies"
-                android:name="com.github.vitorfg8.popcorn.home.popularmovies.PopularMoviesFragment"
+                android:name="com.github.vitorfg8.popcorn.home.popularmovies.ui.PopularMoviesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/popular_tv_shows"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerTVShows"
+                android:name="com.github.vitorfg8.popcorn.home.populartvshows.ui.PopularTvShowsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -9,7 +9,7 @@ fun TrendsResponse.toDomain(): List<Trend> {
             backdropPath = it.backdropPath.orEmpty(),
             id = it.id,
             mediaType = it.mediaType.orEmpty(),
-            title = it.title ?: it.originalTitle.orEmpty(),
+            name = it.name ?: it.originalName.orEmpty(),
             voteAverage = it.voteAverage ?: 0.0
         )
     }

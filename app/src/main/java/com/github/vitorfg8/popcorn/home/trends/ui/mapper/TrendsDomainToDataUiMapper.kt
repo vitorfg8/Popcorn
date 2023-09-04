@@ -10,7 +10,7 @@ fun List<Trend>.toUi(): List<TrendDataUi> {
             backdropUrl = getBackdropUrl(it.backdropPath),
             id = it.id,
             mediaType = it.mediaType,
-            title = it.title,
+            title = it.name,
             voteAverage = getVoteAverage(it.voteAverage)
         )
     }

@@ -4,6 +4,6 @@ data class Trend(
     val backdropPath: String,
     val id: Int,
     val mediaType: String,
-    val title: String,
+    val name: String,
     val voteAverage: Double,
 )
