@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.vitorfg8.popcorn.home.trends.domain.usecase.GetTrendsUseCase
+import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
 import com.github.vitorfg8.popcorn.home.trends.ui.mapper.toUi
-import com.github.vitorfg8.popcorn.home.trends.ui.model.TrendUi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -32,7 +32,7 @@ class TrendsViewModel(private val getTrendsUseCase: GetTrendsUseCase) : ViewMode
 }
 
 sealed class Result {
-    data class Success(val list: List<TrendUi>) :
+    data class Success(val list: List<TrendDataUi>) :
         Result()
 
     data class Error(val exception: Throwable) : Result()

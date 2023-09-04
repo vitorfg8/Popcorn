@@ -5,21 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.vitorfg8.popcorn.databinding.ItemTrendBinding
-import com.github.vitorfg8.popcorn.home.trends.ui.model.TrendUi
+import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
 
-class InfinitePageAdapter(originalList: List<TrendUi>) :
+class InfinitePageAdapter(originalList: List<TrendDataUi>) :
     RecyclerView.Adapter<InfinitePageAdapter.TrendsViewHolder>() {
 
-    private val newList: List<TrendUi> =
+    private val newList: List<TrendDataUi> =
         listOf(originalList.last()) + originalList + listOf(originalList.first())
 
     class TrendsViewHolder(private val binding: ItemTrendBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(trendUi: TrendUi) {
-            Glide.with(binding.root.context).load(trendUi.backdropUrl).into(binding.imageBackdrop)
-            binding.textMediaType.text = trendUi.mediaType
-            binding.textViewVotes.text = trendUi.voteAverage
-            binding.textViewMediaTitle.text = trendUi.title
+        fun bind(trendDataUi: TrendDataUi) {
+            Glide.with(binding.root.context).load(trendDataUi.backdropUrl)
+                .into(binding.imageBackdrop)
+            binding.textMediaType.text = trendDataUi.mediaType
+            binding.textViewVotes.text = trendDataUi.voteAverage
+            binding.textViewMediaTitle.text = trendDataUi.title
         }
     }
 

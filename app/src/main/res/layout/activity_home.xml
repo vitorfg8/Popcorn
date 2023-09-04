@@ -36,8 +36,20 @@
             android:orientation="vertical">
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainer"
+                android:id="@+id/fragmentContainerTrends"
                 android:name="com.github.vitorfg8.popcorn.home.trends.ui.TrendsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/popular_movies"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerMovies"
+                android:name="com.github.vitorfg8.popcorn.home.popularmovies.PopularMoviesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

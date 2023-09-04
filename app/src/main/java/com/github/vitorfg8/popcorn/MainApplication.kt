@@ -1,6 +1,7 @@
 package com.github.vitorfg8.popcorn
 
 import android.app.Application
+import com.github.vitorfg8.popcorn.home.popularmovies.di.popularMoviesModule
 import com.github.vitorfg8.popcorn.home.trends.di.trendsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,7 +15,8 @@ class MainApplication : Application() {
             androidContext(this@MainApplication)
             modules(
                 appModule,
-                trendsModule
+                trendsModule,
+                popularMoviesModule
             )
         }
     }

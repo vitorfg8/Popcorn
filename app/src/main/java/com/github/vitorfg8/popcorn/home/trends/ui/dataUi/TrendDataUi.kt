@@ -1,6 +1,6 @@
-package com.github.vitorfg8.popcorn.home.trends.ui.model
+package com.github.vitorfg8.popcorn.home.trends.ui.dataUi
 
-data class TrendUi(
+data class TrendDataUi(
     val backdropUrl: String,
     val id: Int,
     val mediaType: String,

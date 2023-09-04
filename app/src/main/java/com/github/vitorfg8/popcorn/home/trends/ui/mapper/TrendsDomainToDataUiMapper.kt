@@ -1,11 +1,12 @@
 package com.github.vitorfg8.popcorn.home.trends.ui.mapper
 
 import com.github.vitorfg8.popcorn.home.trends.domain.model.Trend
+import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
 import java.text.DecimalFormat
 
-fun List<Trend>.toUi(): List<com.github.vitorfg8.popcorn.home.trends.ui.model.TrendUi> {
+fun List<Trend>.toUi(): List<TrendDataUi> {
     return this.map {
-        com.github.vitorfg8.popcorn.home.trends.ui.model.TrendUi(
+        TrendDataUi(
             backdropUrl = getBackdropUrl(it.backdropPath),
             id = it.id,
             mediaType = it.mediaType,
