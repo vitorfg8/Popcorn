@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface PopularTvShowsRepository {
-    fun getPopularTvShows(): Flow<List<PopularTvShow>>
+    suspend fun getPopularTvShows(): Flow<List<PopularTvShow>>
 }

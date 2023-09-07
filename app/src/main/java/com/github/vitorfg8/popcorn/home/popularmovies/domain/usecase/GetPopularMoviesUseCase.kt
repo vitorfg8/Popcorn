@@ -5,5 +5,5 @@ import com.github.vitorfg8.popcorn.home.popularmovies.domain.repository.PopularM
 class GetPopularMoviesUseCase(
     private val popularMoviesRepository: PopularMoviesRepository
 ) {
-    operator fun invoke() = popularMoviesRepository.getPopularMovies()
+    suspend operator fun invoke() = popularMoviesRepository.getPopularMovies()
 }

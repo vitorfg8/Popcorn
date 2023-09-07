@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 class PopularMoviesRepositoryImpl
     (private val popularMoviesRemoteDataSource: PopularMoviesRemoteDataSource) :
     PopularMoviesRepository {
-    override fun getPopularMovies() = flow {
+    override suspend fun getPopularMovies() = flow {
         emit(popularMoviesRemoteDataSource.getPopularMovies().toDomain())
     }
 }
