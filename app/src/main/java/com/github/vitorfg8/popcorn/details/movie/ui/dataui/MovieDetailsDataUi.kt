@@ -6,7 +6,7 @@ data class MovieDetailsDataUi(
     val id: Int,
     val posterUrl: String,
     val overview: String,
-    val runtime: Int?,
+    val runtime: String?,
     val title: String,
-    val voteAverage: Double?,
+    val voteAverage: String?,
 )

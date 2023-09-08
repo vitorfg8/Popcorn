@@ -1,6 +1,5 @@
 package com.github.vitorfg8.popcorn.home.popularmovies.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.vitorfg8.popcorn.databinding.FragmentPopularMoviesBinding
 import com.github.vitorfg8.popcorn.details.DetailsActivity
+import com.github.vitorfg8.popcorn.home.popularmovies.ui.dataUi.PopularMovieDataUi
 import com.github.vitorfg8.popcorn.home.popularmovies.ui.viewmodel.PopularMoviesViewModel
 import com.github.vitorfg8.popcorn.utils.State
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,10 +32,9 @@ class PopularMoviesFragment : Fragment() {
                     // TODO:
                 }
 
-                is State.Success -> {
+                is State.Success<List<PopularMovieDataUi>> -> {
                     val popularMoviesAdapter = PopularMoviesAdapter {
-                        //TODO
-                        startActivity(Intent(context, DetailsActivity::class.java))
+                        startActivity(DetailsActivity.getIntent(requireContext(), it))
                     }
                     popularMoviesAdapter.submitList(state.data)
                     binding?.recyclerMovies?.adapter = popularMoviesAdapter

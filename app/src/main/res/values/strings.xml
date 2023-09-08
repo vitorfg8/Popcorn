@@ -5,4 +5,7 @@
     <string name="popular_movies">Filmes populares</string>
     <string name="popular_tv_shows">Séries populares</string>
     <string name="synopsis">Sinopse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cast">Elenco</string>
 </resources>
