@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.github.vitorfg8.popcorn.databinding.FragmentTrendsBinding
+import com.github.vitorfg8.popcorn.details.ui.DetailsActivity
 import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
 import com.github.vitorfg8.popcorn.home.trends.ui.viewmodel.TrendsViewModel
 import com.github.vitorfg8.popcorn.utils.State
@@ -92,7 +93,9 @@ class TrendsFragment : Fragment() {
     }
 
     private fun setupAdapter(trends: List<TrendDataUi>, viewPager: ViewPager2) {
-        infinitePageAdapter = InfinitePageAdapter(trends)
+        infinitePageAdapter = InfinitePageAdapter(trends) { id, mediaType ->
+            startActivity(DetailsActivity.getIntent(requireContext(), id, mediaType))
+        }
         viewPager.adapter = infinitePageAdapter
         viewPager.currentItem = 1
         onInfinitePageChangeCallback(trends.size + 2)
