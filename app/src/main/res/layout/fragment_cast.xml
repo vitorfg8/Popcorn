@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".details.ui.CastFragment">
+    tools:context=".details.cast.ui.CastFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewCast"
@@ -15,7 +15,7 @@
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_cast"
+        android:id="@+id/recyclerCast"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"

@@ -13,7 +13,7 @@ object Versions {
     const val espresso = "3.5.1"
 
     // Koin
-    const val koin = "3.4.3"
+    const val koin = "3.5.0"
 
     // Glide
     const val glide = "4.15.1"

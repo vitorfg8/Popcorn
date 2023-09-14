@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.github.vitorfg8.popcorn.databinding.ActivityDetailsBinding
+import com.github.vitorfg8.popcorn.details.cast.ui.CastFragment
 import com.github.vitorfg8.popcorn.details.ui.dataui.DetailsDataUi
 import com.github.vitorfg8.popcorn.details.ui.viewmodel.DetailsViewModel
 import com.github.vitorfg8.popcorn.utils.State
@@ -22,6 +23,20 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         setDetailsIntent()
+        setupCastList()
+    }
+
+    private fun setupCastList() {
+        binding?.let {
+            val id = intent.extras?.getInt(ID)
+            val mediaType = intent.extras?.getString(MEDIA_TYPE)
+            if (id != null && mediaType != null && binding != null) {
+                val castFragment = CastFragment.newInstance(mediaType, id)
+                supportFragmentManager.beginTransaction()
+                    .replace(it.fragmentContainerViewCast.id, castFragment)
+                    .commit()
+            }
+        }
     }
 
     private fun setDetailsIntent() {

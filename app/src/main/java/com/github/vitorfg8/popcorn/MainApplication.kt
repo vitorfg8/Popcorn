@@ -1,6 +1,7 @@
 package com.github.vitorfg8.popcorn
 
 import android.app.Application
+import com.github.vitorfg8.popcorn.details.cast.di.castModule
 import com.github.vitorfg8.popcorn.details.di.movieDetailsModule
 import com.github.vitorfg8.popcorn.home.popularmovies.di.popularMoviesModule
 import com.github.vitorfg8.popcorn.home.populartvshows.di.popularTvShowsModule
@@ -25,6 +26,7 @@ class MainApplication : Application() {
         trendsModule,
         popularMoviesModule,
         popularTvShowsModule,
-        movieDetailsModule
+        movieDetailsModule,
+        castModule
     )
 }

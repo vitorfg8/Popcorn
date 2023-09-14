@@ -111,7 +111,6 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerViewCast"
-                android:name="com.github.vitorfg8.popcorn.details.ui.CastFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
