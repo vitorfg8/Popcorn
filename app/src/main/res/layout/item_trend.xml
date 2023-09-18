@@ -58,7 +58,7 @@
             android:layout_marginBottom="@dimen/spacing_2"
             android:ellipsize="end"
             android:maxLines="1"
-            android:drawableStart="@drawable/ribbon_outline_icon"
+            android:drawableStart="@drawable/ic_star_outline"
             android:drawablePadding="@dimen/spacing_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/textMediaType"
