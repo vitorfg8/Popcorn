@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="108dp"
+    android:layout_width="124dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/spacing_1">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="100dp"
-        android:layout_height="150dp">
+        android:layout_width="116dp"
+        android:layout_height="192dp">
 
         <ImageView
             android:id="@+id/imageCast"
@@ -27,9 +27,10 @@
         android:layout_marginStart="@dimen/spacing_1"
         android:layout_marginEnd="@dimen/spacing_1"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         android:textStyle="bold"
+        android:textAlignment="center"
         tools:text="@tools:sample/lorem" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -40,7 +41,8 @@
         android:layout_marginStart="@dimen/spacing_1"
         android:layout_marginEnd="@dimen/spacing_1"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         tools:text="@tools:sample/lorem" />
 </LinearLayout>

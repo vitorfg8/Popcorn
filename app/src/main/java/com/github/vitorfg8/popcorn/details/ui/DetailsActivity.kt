@@ -87,6 +87,7 @@ class DetailsActivity : AppCompatActivity() {
         genres?.forEach {
             val chip = Chip(this)
             chip.text = it
+            chip.isClickable = false
             binding?.chipGroup?.addView(chip)
         }
     }
