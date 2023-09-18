@@ -17,7 +17,7 @@ fun Details.toUi(): DetailsDataUi {
 }
 
 private fun getPosterUrl(posterPath: String): String {
-    return "https://image.tmdb.org/t/p/w300${posterPath}"
+    return "https://image.tmdb.org/t/p/original/${posterPath}"
 }
 
 private fun getRuntime(runtime: Int?): String? {
