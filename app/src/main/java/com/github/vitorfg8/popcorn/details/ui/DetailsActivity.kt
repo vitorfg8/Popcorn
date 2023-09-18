@@ -17,7 +17,6 @@ class DetailsActivity : AppCompatActivity() {
 
     private var binding: ActivityDetailsBinding? = null
     private val detailsViewModel by viewModel<DetailsViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -73,10 +72,15 @@ class DetailsActivity : AppCompatActivity() {
             textViewSynopsis.text = details.overview
             textViewDuration.text = details.runtime
             textViewVotes.text = details.voteAverage
-            setSupportActionBar(toolbar)
-            toolbar.title = details.title
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            setupToolbar(details.title)
         }
+    }
+
+    private fun setupToolbar(title: String) {
+        setSupportActionBar(binding?.toolbar)
+        binding?.toolbar?.title = title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding?.toolbar?.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun setupGenres(genres: List<String?>?) {
@@ -86,6 +90,7 @@ class DetailsActivity : AppCompatActivity() {
             binding?.chipGroup?.addView(chip)
         }
     }
+
 
     companion object {
         private const val ID = "id"
