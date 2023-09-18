@@ -1,7 +1,7 @@
 package com.github.vitorfg8.popcorn.details.data.service
 
 import com.github.vitorfg8.popcorn.BuildConfig
-import com.github.vitorfg8.popcorn.details.data.model.movie.MovieDetailsResponse
+import com.github.vitorfg8.popcorn.details.data.model.tvshow.TvShowDetailsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -13,5 +13,5 @@ interface TvShowDetailsService {
         @Path("series_id") seriesId: Int,
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("language") language: String = Locale.getDefault().toLanguageTag(),
-    ): MovieDetailsResponse
+    ): TvShowDetailsResponse
 }

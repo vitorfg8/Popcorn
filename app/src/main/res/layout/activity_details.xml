@@ -83,6 +83,7 @@
                 tools:text="@tools:sample/lorem" />
 
             <HorizontalScrollView
+                android:clipToPadding="false"
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
