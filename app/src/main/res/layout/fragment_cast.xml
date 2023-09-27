@@ -8,7 +8,7 @@
     tools:context=".details.cast.ui.CastFragment">
 
     <com.google.android.material.textview.MaterialTextView
-        android:paddingHorizontal="@dimen/spacing_3"
+        android:paddingHorizontal="@dimen/spacing_4"
         android:id="@+id/textViewCast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:clipToPadding="false"
-        android:paddingStart="@dimen/spacing_3"
+        android:paddingStart="@dimen/spacing_4"
         tools:listitem="@layout/item_cast" />
 
 </LinearLayout>

@@ -34,7 +34,7 @@ class TrendsFragment : Fragment() {
 
     private fun setUpTransformer(viewPager: ViewPager2) {
         val transformer = CompositePageTransformer()
-        transformer.addTransformer(MarginPageTransformer(40))
+        transformer.addTransformer(MarginPageTransformer(20))
         transformer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.8f + r * 0.14f

@@ -60,7 +60,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="@dimen/spacing_3">
+            android:paddingVertical="@dimen/spacing_4">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textViewDuration"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:paddingStart="@dimen/spacing_3"
+                android:paddingStart="@dimen/spacing_4"
                 android:paddingEnd="@dimen/spacing_2"
                 tools:text="@tools:sample/lorem" />
 
@@ -79,7 +79,7 @@
                 android:drawableStart="@drawable/ic_star_outline"
                 app:layout_constraintStart_toEndOf="@id/textViewDuration"
                 app:layout_constraintTop_toTopOf="parent"
-                android:paddingEnd="@dimen/spacing_3"
+                android:paddingEnd="@dimen/spacing_4"
                 tools:text="@tools:sample/lorem" />
 
             <HorizontalScrollView
@@ -87,7 +87,7 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/spacing_3"
+                android:paddingHorizontal="@dimen/spacing_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:paddingBottom="@dimen/spacing_2"
@@ -103,7 +103,7 @@
             </HorizontalScrollView>
 
             <com.google.android.material.textview.MaterialTextView
-                android:paddingHorizontal="@dimen/spacing_3"
+                android:paddingHorizontal="@dimen/spacing_4"
                 android:id="@+id/textViewSynopsisTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 app:layout_constraintTop_toBottomOf="@id/horizontalScrollView" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:paddingHorizontal="@dimen/spacing_3"
+                android:paddingHorizontal="@dimen/spacing_4"
                 android:id="@+id/textViewSynopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
 
 
             <androidx.fragment.app.FragmentContainerView
-                android:layout_marginTop="@dimen/spacing_3"
+                android:layout_marginTop="@dimen/spacing_4"
                 android:id="@+id/fragmentContainerViewCast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
