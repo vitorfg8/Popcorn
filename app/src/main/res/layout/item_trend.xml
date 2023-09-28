@@ -20,6 +20,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageGradient"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_black"
+            app:layout_constraintBottom_toBottomOf="@id/imageBackdrop"
+            app:layout_constraintEnd_toEndOf="@id/imageBackdrop"
+            app:layout_constraintStart_toStartOf="@id/imageBackdrop"
+            app:layout_constraintTop_toTopOf="@id/imageBackdrop" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewMediaTitle"
@@ -29,6 +39,7 @@
             android:layout_marginBottom="@dimen/spacing_2"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@android:color/white"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintBottom_toTopOf="@id/textViewVotes"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +48,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
+            android:textColor="@android:color/white"
             android:id="@+id/textMediaType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +70,8 @@
             android:layout_marginBottom="@dimen/spacing_2"
             android:ellipsize="end"
             android:maxLines="1"
-            android:drawableStart="@drawable/ic_star_outline"
+            android:drawableStart="@drawable/ic_star_white_outline"
+            android:textColor="@android:color/white"
             android:drawablePadding="@dimen/spacing_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/textMediaType"
