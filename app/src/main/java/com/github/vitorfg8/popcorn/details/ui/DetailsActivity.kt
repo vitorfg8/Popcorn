@@ -85,10 +85,10 @@ class DetailsActivity : AppCompatActivity() {
         binding?.appbar?.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
             val maxScroll = appBarLayout.totalScrollRange
             val percentage = abs(verticalOffset).toFloat() / maxScroll.toFloat()
-            if (percentage == 1f) {
-                binding?.toolbar?.title = title
+            if (percentage >= 0.9f) {
+                binding?.collapsingToolbar?.title = title
             } else {
-                binding?.toolbar?.title = ""
+                binding?.collapsingToolbar?.title = ""
             }
         }
     }
