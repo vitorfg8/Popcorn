@@ -2,7 +2,6 @@ package com.github.vitorfg8.popcorn.home.trends.ui.mapper
 
 import com.github.vitorfg8.popcorn.home.trends.domain.model.Trend
 import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
-import java.text.DecimalFormat
 
 fun List<Trend>.toUi(): List<TrendDataUi> {
     return this.map {
@@ -21,6 +20,5 @@ private fun getBackdropUrl(backdropPath: String): String {
 }
 
 private fun getVoteAverage(voteAverage: Double): String {
-    val decimalFormat = DecimalFormat("#.#")
-    return decimalFormat.format(voteAverage)
+    return String.format("%.1f", voteAverage)
 }

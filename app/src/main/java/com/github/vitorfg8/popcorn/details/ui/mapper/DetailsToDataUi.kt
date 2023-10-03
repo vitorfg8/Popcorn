@@ -2,7 +2,6 @@ package com.github.vitorfg8.popcorn.details.ui.mapper
 
 import com.github.vitorfg8.popcorn.details.domain.model.Details
 import com.github.vitorfg8.popcorn.details.ui.dataui.DetailsDataUi
-import java.text.DecimalFormat
 
 fun Details.toUi(): DetailsDataUi {
     return DetailsDataUi(
@@ -29,6 +28,5 @@ private fun getRuntime(runtime: Int?): String? {
 }
 
 private fun getVoteAverage(voteAverage: Double?): String {
-    val decimalFormat = DecimalFormat("#.#")
-    return decimalFormat.format(voteAverage)
+    return String.format("%.1f", voteAverage)
 }
