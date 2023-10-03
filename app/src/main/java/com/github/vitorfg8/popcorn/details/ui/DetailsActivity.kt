@@ -12,6 +12,7 @@ import com.github.vitorfg8.popcorn.details.ui.viewmodel.DetailsViewModel
 import com.github.vitorfg8.popcorn.utils.State
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.abs
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -78,9 +79,18 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun setupToolbar(title: String) {
         setSupportActionBar(binding?.toolbar)
-        binding?.toolbar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding?.toolbar?.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        binding?.toolbar?.title = ""
+        binding?.appbar?.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val maxScroll = appBarLayout.totalScrollRange
+            val percentage = abs(verticalOffset).toFloat() / maxScroll.toFloat()
+            if (percentage == 1f) {
+                binding?.toolbar?.title = title
+            } else {
+                binding?.toolbar?.title = ""
+            }
+        }
     }
 
     private fun setupGenres(genres: List<String?>?) {
