@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.github.vitorfg8.popcorn.databinding.FragmentPopularMoviesBinding
 import com.github.vitorfg8.popcorn.details.ui.DetailsActivity
@@ -33,18 +34,25 @@ class PopularMoviesFragment : Fragment() {
                     // TODO:
                 }
 
-                is State.Success<List<PopularMovieDataUi>> -> {
-                    val popularMoviesAdapter = PopularMoviesAdapter {
-                        startActivity(DetailsActivity.getIntent(requireContext(), it, MOVIE))
-                    }
-                    popularMoviesAdapter.submitList(state.data)
-                    binding?.recyclerMovies?.adapter = popularMoviesAdapter
-                }
-
-                is State.Error -> {
-                    //TODO
-                }
+                is State.Success<List<PopularMovieDataUi>> -> showSuccessState(state.data)
+                is State.Error -> showErrorState()
             }
         }
+    }
+
+    private fun showSuccessState(data: List<PopularMovieDataUi>) {
+        binding?.recyclerMovies?.isVisible = true
+        binding?.errorCard?.root?.isVisible = false
+
+        val popularMoviesAdapter = PopularMoviesAdapter {
+            startActivity(DetailsActivity.getIntent(requireContext(), it, MOVIE))
+        }
+        popularMoviesAdapter.submitList(data)
+        binding?.recyclerMovies?.adapter = popularMoviesAdapter
+    }
+
+    private fun showErrorState() {
+        binding?.recyclerMovies?.isVisible = false
+        binding?.errorCard?.root?.isVisible = true
     }
 }

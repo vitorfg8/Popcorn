@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Popcorn</string>
-    <string name="default_error_message">Ops algo deu errado …</string>
+    <string name="default_error_message">Oops …</string>
+    <string name="error">Ocorreu um erro.</string>
     <string name="home_title">O que você quer assistir?</string>
     <string name="popular_movies">Filmes populares</string>
     <string name="popular_tv_shows">Séries populares</string>

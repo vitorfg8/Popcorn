@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -24,8 +25,7 @@ class TrendsFragment : Fragment() {
     private var binding: FragmentTrendsBinding? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTrendsBinding.inflate(inflater, container, false)
         observeTrendsList()
@@ -54,7 +54,6 @@ class TrendsFragment : Fragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
                 super.onPageScrollStateChanged(state)
-
                 if (state == ViewPager2.SCROLL_STATE_IDLE) {
                     when (binding?.viewPager?.currentItem) {
                         listSize - 1 -> binding?.viewPager?.setCurrentItem(1, false)
@@ -68,21 +67,27 @@ class TrendsFragment : Fragment() {
     private fun observeTrendsList() {
         trendsViewModel.trends.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is State.Success -> {
-                    binding?.viewPager?.let {
-                        setupAdapter(state.data, it)
-                        setupViewPager(it)
-                        setUpTransformer(it)
-                    }
-                }
-
-                is State.Error -> {
-                    //TODO
-                }
-
+                is State.Success -> showSuccessState(state.data)
+                is State.Error -> showErrorState()
                 is State.Loading -> {} //TODO
             }
         }
+    }
+
+    private fun showSuccessState(data: List<TrendDataUi>) {
+        binding?.errorCard?.root?.isVisible = false
+        binding?.viewPager?.isVisible = true
+        binding?.viewPager?.let {
+            setupAdapter(data, it)
+            setupViewPager(it)
+            setUpTransformer(it)
+        }
+
+    }
+
+    private fun showErrorState() {
+        binding?.errorCard?.root?.isVisible = true
+        binding?.viewPager?.isVisible = false
     }
 
     private fun setupViewPager(viewPager: ViewPager2) {

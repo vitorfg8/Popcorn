@@ -25,4 +25,12 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_poster" />
 
+    <include
+        android:id="@+id/errorCard"
+        layout="@layout/fragment_default_error"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="@dimen/spacing_4"
+        android:visibility="gone" />
+
 </LinearLayout>
