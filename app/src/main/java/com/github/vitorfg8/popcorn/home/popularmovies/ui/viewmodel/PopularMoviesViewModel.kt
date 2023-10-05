@@ -9,6 +9,7 @@ import com.github.vitorfg8.popcorn.home.popularmovies.ui.dataUi.PopularMovieData
 import com.github.vitorfg8.popcorn.home.popularmovies.ui.mapper.toUi
 import com.github.vitorfg8.popcorn.utils.State
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class PopularMoviesViewModel(private val getPopularMoviesUseCase: GetPopularMoviesUseCase) :
@@ -24,7 +25,9 @@ class PopularMoviesViewModel(private val getPopularMoviesUseCase: GetPopularMovi
 
     private fun getTrends() {
         viewModelScope.launch {
-            getPopularMoviesUseCase().catch { error ->
+            getPopularMoviesUseCase().onStart {
+                _popularMovies.value = State.Loading
+            }.catch { error ->
                 _popularMovies.value = State.Error(error)
             }.collect { popularMovies ->
                 _popularMovies.value = State.Success(popularMovies.toUi())

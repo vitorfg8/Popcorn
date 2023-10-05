@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.faltenreich.skeletonlayout.Skeleton
+import com.faltenreich.skeletonlayout.applySkeleton
+import com.github.vitorfg8.popcorn.R
 import com.github.vitorfg8.popcorn.databinding.FragmentPopularTvShowsBinding
 import com.github.vitorfg8.popcorn.details.ui.DetailsActivity
 import com.github.vitorfg8.popcorn.home.populartvshows.ui.dataUi.PopularTvShowDataUi
@@ -20,8 +23,7 @@ class PopularTvShowsFragment : Fragment() {
     private val popularTvShowsViewModel by viewModel<PopularTvShowsViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPopularTvShowsBinding.inflate(inflater, container, false)
         observePopularTvShowsList()
@@ -29,26 +31,39 @@ class PopularTvShowsFragment : Fragment() {
     }
 
     private fun observePopularTvShowsList() {
+        val skeleton = binding?.recyclerTvShows?.applySkeleton(R.layout.item_poster, 5)
         popularTvShowsViewModel.popularTvShows.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is State.Loading -> {
-                    // TODO:
-                }
-
-                is State.Success -> showSuccessState(state.data)
-                is State.Error -> showErrorState()
+                is State.Loading -> skeleton?.showSkeleton()
+                is State.Success -> handleSuccess(skeleton, state)
+                is State.Error -> handleError(skeleton)
             }
         }
     }
 
+    private fun handleError(skeleton: Skeleton?) {
+        skeleton?.showOriginal()
+        showErrorState()
+    }
+
+    private fun handleSuccess(
+        skeleton: Skeleton?,
+        state: State.Success<List<PopularTvShowDataUi>>
+    ) {
+        skeleton?.showOriginal()
+        showSuccessState(state.data)
+    }
+
     private fun showSuccessState(data: List<PopularTvShowDataUi>) {
-        binding?.recyclerTvShows?.isVisible = true
-        binding?.errorCard?.root?.isVisible = false
-        val popularTvShowsAdapter = PopularTvShowsAdapter {
-            startActivity(DetailsActivity.getIntent(requireContext(), it, TV))
+        binding?.apply {
+            recyclerTvShows.isVisible = true
+            errorCard.root.isVisible = false
+            val popularTvShowsAdapter = PopularTvShowsAdapter {
+                startActivity(DetailsActivity.getIntent(requireContext(), it, TV))
+            }
+            popularTvShowsAdapter.submitList(data)
+            recyclerTvShows.adapter = popularTvShowsAdapter
         }
-        popularTvShowsAdapter.submitList(data)
-        binding?.recyclerTvShows?.adapter = popularTvShowsAdapter
     }
 
     private fun showErrorState() {

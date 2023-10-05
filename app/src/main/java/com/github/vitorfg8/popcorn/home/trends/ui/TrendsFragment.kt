@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import com.github.vitorfg8.popcorn.R
 import com.github.vitorfg8.popcorn.databinding.FragmentTrendsBinding
@@ -72,21 +73,24 @@ class TrendsFragment : Fragment() {
         val skeleton = binding?.viewPager?.applySkeleton(R.layout.item_trend, 3)
         trendsViewModel.trends.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is State.Loading -> {
-                    skeleton?.showSkeleton()
-                }
-
-                is State.Success -> {
-                    skeleton?.showOriginal()
-                    showSuccessState(state.data)
-                }
-
-                is State.Error -> {
-                    skeleton?.showOriginal()
-                    showErrorState()
-                }
+                is State.Loading -> skeleton?.showSkeleton()
+                is State.Success -> handleSuccess(skeleton, state)
+                is State.Error -> handleError(skeleton)
             }
         }
+    }
+
+    private fun handleError(skeleton: Skeleton?) {
+        skeleton?.showOriginal()
+        showErrorState()
+    }
+
+    private fun handleSuccess(
+        skeleton: Skeleton?,
+        state: State.Success<List<TrendDataUi>>
+    ) {
+        skeleton?.showOriginal()
+        showSuccessState(state.data)
     }
 
     private fun showSuccessState(data: List<TrendDataUi>) {

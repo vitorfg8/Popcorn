@@ -9,6 +9,7 @@ import com.github.vitorfg8.popcorn.home.populartvshows.ui.dataUi.PopularTvShowDa
 import com.github.vitorfg8.popcorn.home.populartvshows.ui.mapper.toUi
 import com.github.vitorfg8.popcorn.utils.State
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class PopularTvShowsViewModel(
@@ -25,7 +26,9 @@ class PopularTvShowsViewModel(
 
     private fun getPopularTvSeries() {
         viewModelScope.launch {
-            getPopularTvShowsUseCase().catch { error ->
+            getPopularTvShowsUseCase().onStart {
+                _popularTvShows.value = State.Loading
+            }.catch { error ->
                 _popularTvShows.value = State.Error(error)
             }.collect { popularTvShows ->
                 _popularTvShows.value = State.Success(popularTvShows.toUi())
