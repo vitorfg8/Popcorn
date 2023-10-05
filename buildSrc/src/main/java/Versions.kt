@@ -20,4 +20,7 @@ object Versions {
 
     // Retrofit
     const val retrofit = "2.9.0"
+
+    // Skeletonlayout
+    const val skeletonlayout = "5.0.0"
 }

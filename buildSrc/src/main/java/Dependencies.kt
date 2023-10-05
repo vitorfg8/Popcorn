@@ -21,4 +21,7 @@ object Dependencies {
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+    // Skeletonlayout
+    const val skeletonlayout = "com.faltenreich:skeletonlayout:${Versions.skeletonlayout}"
 }

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.faltenreich.skeletonlayout.applySkeleton
+import com.github.vitorfg8.popcorn.R
 import com.github.vitorfg8.popcorn.databinding.FragmentTrendsBinding
 import com.github.vitorfg8.popcorn.details.ui.DetailsActivity
 import com.github.vitorfg8.popcorn.home.trends.ui.dataUi.TrendDataUi
@@ -28,18 +30,20 @@ class TrendsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTrendsBinding.inflate(inflater, container, false)
+        setupViewPager()
+        setUpTransformer()
         observeTrendsList()
         return binding?.root
     }
 
-    private fun setUpTransformer(viewPager: ViewPager2) {
+    private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(20))
         transformer.addTransformer { page, position ->
             val r = 1 - abs(position)
             page.scaleY = 0.8f + r * 0.14f
         }
-        viewPager.setPageTransformer(transformer)
+        binding?.viewPager?.setPageTransformer(transformer)
     }
 
 
@@ -65,24 +69,32 @@ class TrendsFragment : Fragment() {
     }
 
     private fun observeTrendsList() {
+        val skeleton = binding?.viewPager?.applySkeleton(R.layout.item_trend, 3)
         trendsViewModel.trends.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is State.Success -> showSuccessState(state.data)
-                is State.Error -> showErrorState()
-                is State.Loading -> {} //TODO
+                is State.Loading -> {
+                    skeleton?.showSkeleton()
+                }
+
+                is State.Success -> {
+                    skeleton?.showOriginal()
+                    showSuccessState(state.data)
+                }
+
+                is State.Error -> {
+                    skeleton?.showOriginal()
+                    showErrorState()
+                }
             }
         }
     }
 
     private fun showSuccessState(data: List<TrendDataUi>) {
-        binding?.errorCard?.root?.isVisible = false
-        binding?.viewPager?.isVisible = true
-        binding?.viewPager?.let {
-            setupAdapter(data, it)
-            setupViewPager(it)
-            setUpTransformer(it)
+        binding?.apply {
+            errorCard.root.isVisible = false
+            viewPager.isVisible = true
+            setupAdapter(data, viewPager)
         }
-
     }
 
     private fun showErrorState() {
@@ -90,11 +102,13 @@ class TrendsFragment : Fragment() {
         binding?.viewPager?.isVisible = false
     }
 
-    private fun setupViewPager(viewPager: ViewPager2) {
-        viewPager.offscreenPageLimit = 3
-        viewPager.clipToPadding = false
-        viewPager.clipChildren = false
-        viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+    private fun setupViewPager() {
+        binding?.viewPager?.apply {
+            offscreenPageLimit = 3
+            clipToPadding = false
+            clipChildren = false
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        }
     }
 
     private fun setupAdapter(trends: List<TrendDataUi>, viewPager: ViewPager2) {

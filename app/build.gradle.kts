@@ -68,4 +68,6 @@ dependencies {
 
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitGsonConverter)
+
+    implementation(Dependencies.skeletonlayout)
 }
