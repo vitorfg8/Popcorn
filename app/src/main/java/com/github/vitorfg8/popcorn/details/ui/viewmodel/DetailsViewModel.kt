@@ -9,6 +9,7 @@ import com.github.vitorfg8.popcorn.details.ui.dataui.DetailsDataUi
 import com.github.vitorfg8.popcorn.details.ui.mapper.toUi
 import com.github.vitorfg8.popcorn.utils.State
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(private val detailsUseCase: DetailsUseCase) : ViewModel() {
@@ -18,7 +19,9 @@ class DetailsViewModel(private val detailsUseCase: DetailsUseCase) : ViewModel()
 
     fun getDetails(id: Int, mediaType: String) {
         viewModelScope.launch {
-            detailsUseCase(id, mediaType).catch { error ->
+            detailsUseCase(id, mediaType).onStart {
+                _details.value = State.Loading
+            }.catch { error ->
                 _details.value = State.Error(error)
             }.collect { details ->
                 _details.value = State.Success(details.toUi())

@@ -50,15 +50,10 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun observeMovieDetails() {
         detailsViewModel.details.observe(this) { state ->
+            binding?.skeletonLayoutPoster?.showSkeleton()
             when (state) {
-                is State.Loading -> {
-                    //TODO:
-                }
-
-                is State.Success<DetailsDataUi> -> {
-                    setupDetails(state.data)
-                }
-
+                is State.Loading -> handleLoading()
+                is State.Success<DetailsDataUi> -> setupDetails(state.data)
                 is State.Error -> {
                     //TODO:
                 }
@@ -66,9 +61,18 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
+    private fun handleLoading() {
+        binding?.skeletonLayout?.showSkeleton()
+        binding?.skeletonLayoutPoster?.showSkeleton()
+    }
+
     private fun setupDetails(details: DetailsDataUi) {
         binding?.apply {
-            Glide.with(applicationContext).load(details.posterUrl).into(appBarImage)
+            skeletonLayout.showOriginal()
+            skeletonLayoutPoster.showOriginal()
+            Glide.with(applicationContext)
+                .load(details.posterUrl)
+                .into(appBarImage)
             setupGenres(details.genres)
             textViewSynopsis.text = details.overview
             textViewDuration.text = details.runtime
