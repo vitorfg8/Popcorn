@@ -4,6 +4,7 @@ package com.github.vitorfg8.popcorn.details.domain.model
 data class Details(
     val genres: List<String?>?,
     val id: Int,
+    val mediaType: String,
     val posterPath: String,
     val overview: String,
     val runtime: Int?,

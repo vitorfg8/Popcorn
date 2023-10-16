@@ -8,4 +8,6 @@
     <string name="synopsis">Synopsis</string>
     <string name="cast">Cast</string>
     <string name="poster">Poster</string>
+    <string name="try_again">Try again</string>
+    <string name="loading_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque laoreet ex vel vehicula. Sed auctor fringilla urna, nec imperdiet velit convallis ut. Phasellus rutrum nibh vel ex malesuada, non efficitur libero posuere. Ut mattis lorem nec tortor luctus consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl magna, vestibulum et arcu sit amet, pellentesque laoreet metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus imperdiet pulvinar lacus in tempor. Aenean ultricies libero ac aliquam vulputate. Sed sapien sem, posuere nec ante ac, aliquam rutrum dolor.</string>
 </resources>

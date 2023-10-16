@@ -27,7 +27,7 @@
 
     <include
         android:id="@+id/errorCard"
-        layout="@layout/fragment_default_error"
+        layout="@layout/banner_default_error"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginHorizontal="@dimen/spacing_4"

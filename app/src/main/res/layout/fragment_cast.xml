@@ -8,7 +8,7 @@
     tools:context=".details.cast.ui.CastFragment">
 
     <com.google.android.material.textview.MaterialTextView
-        android:paddingHorizontal="@dimen/spacing_4"
+        android:layout_marginHorizontal="@dimen/spacing_4"
         android:id="@+id/textViewCast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +16,7 @@
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/spacing_2"
         android:id="@+id/recyclerCast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

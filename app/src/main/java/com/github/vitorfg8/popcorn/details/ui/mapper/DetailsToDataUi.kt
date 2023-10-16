@@ -7,6 +7,7 @@ fun Details.toUi(): DetailsDataUi {
     return DetailsDataUi(
         genres = genres,
         id = id,
+        mediaType = mediaType,
         posterUrl = getPosterUrl(posterPath),
         overview = overview,
         runtime = getRuntime(runtime),
