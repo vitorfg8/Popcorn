@@ -5,7 +5,9 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/spacing_4"
+    android:layout_marginHorizontal="@dimen/spacing_4"
+    android:layout_marginTop="@dimen/spacing_11"
+    android:layout_marginBottom="@dimen/spacing_4"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".utils.DefaultErrorFragment">
@@ -51,5 +53,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/close"
+        android:src="@drawable/ic_close_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

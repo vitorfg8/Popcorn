@@ -11,19 +11,23 @@ class DefaultErrorFragment : Fragment() {
 
     private var binding: FragmentDefaultErrorBinding? = null
     private lateinit var onTryAgainClicked: () -> Unit
+    private lateinit var onCloseClicked: () -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDefaultErrorBinding.inflate(inflater, container, false)
-        setupTryAgainClick()
+        setupButtons()
         return binding?.root
     }
 
-    private fun setupTryAgainClick() {
+    private fun setupButtons() {
         binding?.tryAgainButton?.setOnClickListener {
             onTryAgainClicked.invoke()
+        }
+        binding?.imageClose?.setOnClickListener {
+            onCloseClicked.invoke()
         }
     }
 
@@ -34,9 +38,10 @@ class DefaultErrorFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(onTryAgainClick: () -> Unit) =
+        fun newInstance(onTryAgainClick: () -> Unit, onCloseClick: () -> Unit) =
             DefaultErrorFragment().apply {
                 onTryAgainClicked = onTryAgainClick
+                onCloseClicked = onCloseClick
             }
     }
 }

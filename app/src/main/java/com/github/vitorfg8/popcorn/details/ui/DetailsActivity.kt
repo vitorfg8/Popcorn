@@ -38,9 +38,11 @@ class DetailsActivity : AppCompatActivity() {
             when (state) {
                 is State.Loading -> showFragment(DetailsLoadingFragment.newInstance())
                 is State.Success<DetailsDataUi> -> showFragment(DetailsFragment.newInstance(state.data))
-                is State.Error -> showFragment(DefaultErrorFragment.newInstance {
-                    getDetails()
-                })
+                is State.Error -> showFragment(
+                    DefaultErrorFragment.newInstance(
+                        onTryAgainClick = { getDetails() },
+                        onCloseClick = { onBackPressedDispatcher.onBackPressed() })
+                )
             }
         }
     }
