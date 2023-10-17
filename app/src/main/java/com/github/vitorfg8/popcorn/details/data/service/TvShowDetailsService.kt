@@ -8,7 +8,7 @@ import retrofit2.http.Query
 import java.util.Locale
 
 interface TvShowDetailsService {
-    @GET("t/{series_id}")
+    @GET("tv/{series_id}")
     suspend fun getTvShowDetails(
         @Path("series_id") seriesId: Int,
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
