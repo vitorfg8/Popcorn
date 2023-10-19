@@ -59,22 +59,27 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setupToolbar(title: String) {
-        if (activity is DetailsActivity) {
-            binding?.apply {
-                (activity as DetailsActivity).setSupportActionBar(toolbar)
-                (activity as DetailsActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                toolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
-                toolbar.title = ""
-                appbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-                    val maxScroll = appBarLayout.totalScrollRange
-                    val percentage = abs(verticalOffset).toFloat() / maxScroll.toFloat()
-                    if (percentage >= 0.9f) {
-                        binding?.collapsingToolbar?.title = title
-                    } else {
-                        binding?.collapsingToolbar?.title = ""
-                    }
-                }
-            }
+        val detailsActivity = activity as? DetailsActivity
+        binding?.apply {
+            detailsActivity?.setSupportActionBar(toolbar)
+            detailsActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            toolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+            toolbar.title = ""
+            setOffsetAnimation(title, detailsActivity)
+        }
+    }
+
+    private fun FragmentDetailsBinding.setOffsetAnimation(
+        title: String,
+        detailsActivity: DetailsActivity?
+    ) {
+        appbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+            val maxScroll = appBarLayout.totalScrollRange
+            val percentage = abs(verticalOffset).toFloat() / maxScroll.toFloat()
+            collapsingToolbar.title = if (percentage >= 0.99f) title else ""
+            detailsActivity?.supportActionBar?.setHomeAsUpIndicator(
+                if (percentage >= 0.99f) R.drawable.ic_chevron_back else R.drawable.navigation_icon_expanded
+            )
         }
     }
 
