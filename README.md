@@ -1,21 +1,22 @@
 # Popcorn - Work in Progress 🚧
 
-This is a mobile application that utilizes the TMDB (The Movie Database) API to display the latest
-trends in movies and TV series. With a user-friendly and intuitive interface, this app allows users
-to keep track of the most popular productions of the moment, obtain detailed information about them.
+This is a mobile application that utilizes the TMDB (The Movie Database) API to display the latest trends in movies and TV series. With a user-friendly and intuitive interface, this app allows users to keep track of the most popular productions of the moment, obtain detailed information about them.
+
 
 ## Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-## Funcionalidades
+
+## Features
 
 - Show trending movies and TV shows
 - Duration, cast, synopsis, duration and audience rating
 - Light and dark theme
 - Languages: English and Portuguese
 
-## Rodando localmente
+
+## Running the project
 
 1. Clone the project by copying this command to your terminal:
 
@@ -25,18 +26,18 @@ to keep track of the most popular productions of the moment, obtain detailed inf
 
 2. Open the project in Android Studio
 
-3. Create a new account and generate an API key
-   in [TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
+3. Create a new account and generate an API key in [TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
 
 4. Add the TMDB API key to the "local.properties" file:
 
 ```groovy
-API_KEY = 0123456789abcd
+API_KEY=0123456789abcd
 ```
 
 5. Run the app
 
-## Stack utilizada
+
+## Technologies
 
 **Architecture** MVVM, Clean Archteture
 
@@ -44,7 +45,8 @@ API_KEY = 0123456789abcd
 
 **Dependency injection** Koin
 
-## Licença
 
-This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License - see
-the [LICENSE](LICENSE) file for details.
+
+## License
+
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License - see the [LICENSE](LICENSE) file for details.
