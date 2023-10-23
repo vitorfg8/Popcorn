@@ -49,6 +49,8 @@ API_KEY=0123456789abcd
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License - see the [LICENSE](LICENSE) file for details.
+
+UI inspired by [Material Design 3](https://m3.material.io/) and [Eclipse](https://dribbble.com/shots/21234862-Eclipse-Movie-Stream-Mobile-App) by [Ihya Fathurr](https://dribbble.com/ihyaet)
 
 This application uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.
