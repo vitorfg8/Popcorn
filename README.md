@@ -31,7 +31,7 @@ to keep track of the most popular productions of the moment, obtain detailed inf
 4. Add the TMDB API key to the "local.properties" file:
 
 ```groovy
-API_KEY = 0123456789 abcd
+API_KEY = 0123456789abcd
 ```
 
 5. Run the app
