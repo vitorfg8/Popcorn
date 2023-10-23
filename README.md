@@ -37,7 +37,7 @@ API_KEY=0123456789abcd
 5. Run the app
 
 
-## Technologies
+## Tech Stack
 
 **Architecture** MVVM, Clean Archteture
 
