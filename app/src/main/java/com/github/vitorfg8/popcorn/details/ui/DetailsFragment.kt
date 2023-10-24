@@ -12,8 +12,6 @@ import com.github.vitorfg8.popcorn.databinding.FragmentDetailsBinding
 import com.github.vitorfg8.popcorn.details.cast.ui.CastFragment
 import com.github.vitorfg8.popcorn.details.ui.dataui.DetailsDataUi
 import com.google.android.material.chip.Chip
-import kotlin.math.abs
-
 
 class DetailsFragment : Fragment() {
     private var binding: FragmentDetailsBinding? = null
@@ -23,6 +21,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        setupToolbar()
         setupDetails()
         setupCastList()
         return binding?.root
@@ -52,34 +51,22 @@ class DetailsFragment : Fragment() {
                     textViewSynopsis.text = details.overview
                     textViewDuration.text = details.runtime
                     textViewVotes.text = details.voteAverage
-                    setupToolbar(details.title)
+                    textViewTitle.text = details.title
                 }
             }
         }
     }
 
-    private fun setupToolbar(title: String) {
+    private fun setupToolbar() {
         val detailsActivity = activity as? DetailsActivity
-        binding?.apply {
-            detailsActivity?.setSupportActionBar(toolbar)
-            detailsActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            toolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
-            toolbar.title = ""
-            setOffsetAnimation(title, detailsActivity)
-        }
-    }
-
-    private fun FragmentDetailsBinding.setOffsetAnimation(
-        title: String,
-        detailsActivity: DetailsActivity?
-    ) {
-        appbar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val maxScroll = appBarLayout.totalScrollRange
-            val percentage = abs(verticalOffset).toFloat() / maxScroll.toFloat()
-            collapsingToolbar.title = if (percentage >= 0.99f) title else ""
-            detailsActivity?.supportActionBar?.setHomeAsUpIndicator(
-                if (percentage >= 0.99f) R.drawable.ic_chevron_back else R.drawable.navigation_icon_expanded
-            )
+        if (activity is DetailsActivity) {
+            binding?.apply {
+                detailsActivity?.setSupportActionBar(toolbar)
+                detailsActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                toolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+                toolbar.title = ""
+                detailsActivity?.supportActionBar?.setHomeAsUpIndicator(R.drawable.navigation_icon_expanded)
+            }
         }
     }
 
