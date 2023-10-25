@@ -13,6 +13,7 @@ This is a mobile application that utilizes the TMDB (The Movie Database) API to 
 - Show trending movies and TV shows
 - Duration, cast, synopsis, duration and audience rating
 - Light and dark theme
+- Themed app icon (Android 13+)
 - Languages: English and Portuguese
 
 
