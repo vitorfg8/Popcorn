@@ -5,7 +5,7 @@ This is a mobile application that utilizes the TMDB (The Movie Database) API to 
 
 ## Screenshots
 
-<img src="./screenshots/home.png" alt="Home" width="290">  <img src="./screenshots/light_mode.png" alt="Light Mode" width="290">  <img src="./screenshots/dark_mode.png" alt="Dark Mode" width="290">
+<img src="./screenshots/home.png" alt="Home" width="250">  <img src="./screenshots/light_mode.png" alt="Light Mode" width="250">  <img src="./screenshots/dark_mode.png" alt="Dark Mode" width="250">
 
 
 ## Features
