@@ -1,11 +1,11 @@
-# Popcorn - Work in Progress 🚧
+# Popcorn
 
 This is a mobile application that utilizes the TMDB (The Movie Database) API to display the latest trends in movies and TV series. With a user-friendly and intuitive interface, this app allows users to keep track of the most popular productions of the moment and obtain detailed information about them.
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src="./screenshots/home.png" alt="Home" width="300">  <img src="./screenshots/light_mode.png" alt="Light Mode" width="300">  <img src="./screenshots/dark_mode.png" alt="Dark Mode" width="300">
 
 
 ## Features
