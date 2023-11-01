@@ -8,7 +8,7 @@ import java.util.Locale
 
 
 interface PopularTvShowsService {
-    @GET("tv/popular/")
+    @GET("tv/popular")
     suspend fun getPopularTvShows(
         @Query("api_key") apiKey: String = BuildConfig.API_KEY,
         @Query("language") language: String = Locale.getDefault().toLanguageTag(),
