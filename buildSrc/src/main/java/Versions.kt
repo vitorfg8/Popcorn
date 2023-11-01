@@ -11,6 +11,9 @@ object Versions {
     const val junit = "4.13.2"
     const val androidTestJunit = "1.1.5"
     const val espresso = "3.5.1"
+    const val mockk = "1.13.8"
+    const val coroutinesTest = "1.6.4"
+    const val coreTesting = "2.2.0"
 
     // Koin
     const val koin = "3.5.0"
