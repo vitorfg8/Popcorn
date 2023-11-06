@@ -26,6 +26,7 @@ class PopularTvShowsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPopularTvShowsBinding.inflate(inflater, container, false)
+        popularTvShowsViewModel.getPopularTvSeries()
         observePopularTvShowsList()
         return binding?.root
     }

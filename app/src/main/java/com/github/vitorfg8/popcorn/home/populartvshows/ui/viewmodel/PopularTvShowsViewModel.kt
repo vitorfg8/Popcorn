@@ -20,19 +20,15 @@ class PopularTvShowsViewModel(
     val popularTvShows: LiveData<State<List<PopularTvShowDataUi>>>
         get() = _popularTvShows
 
-    init {
-        getPopularTvSeries()
-    }
-
-    private fun getPopularTvSeries() {
-        viewModelScope.launch {
-            getPopularTvShowsUseCase().onStart {
-                _popularTvShows.value = State.Loading
-            }.catch { error ->
-                _popularTvShows.value = State.Error(error)
-            }.collect { popularTvShows ->
-                _popularTvShows.value = State.Success(popularTvShows.toUi())
-            }
+fun getPopularTvSeries() {
+    viewModelScope.launch {
+        getPopularTvShowsUseCase().onStart {
+            _popularTvShows.value = State.Loading
+        }.catch { error ->
+            _popularTvShows.value = State.Error(error)
+        }.collect { popularTvShows ->
+            _popularTvShows.value = State.Success(popularTvShows.toUi())
         }
     }
+}
 }

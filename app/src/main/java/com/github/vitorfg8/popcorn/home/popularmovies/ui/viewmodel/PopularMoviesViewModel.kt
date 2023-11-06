@@ -19,11 +19,8 @@ class PopularMoviesViewModel(private val getPopularMoviesUseCase: GetPopularMovi
     val popularMovies: LiveData<State<List<PopularMovieDataUi>>>
         get() = _popularMovies
 
-    init {
-        getTrends()
-    }
 
-    private fun getTrends() {
+    fun getPopularMovies() {
         viewModelScope.launch {
             getPopularMoviesUseCase().onStart {
                 _popularMovies.value = State.Loading

@@ -26,6 +26,7 @@ class PopularMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
+        popularMoviesViewModel.getPopularMovies()
         observePopularMoviesList()
         return binding?.root
     }

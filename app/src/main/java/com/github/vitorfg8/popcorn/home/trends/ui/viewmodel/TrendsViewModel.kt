@@ -18,21 +18,17 @@ class TrendsViewModel(private val getTrendsUseCase: GetTrendsUseCase) : ViewMode
     val trends: LiveData<State<List<TrendDataUi>>>
         get() = _trends
 
-    init {
-        getTrends()
-    }
-
-    private fun getTrends() {
-        viewModelScope.launch {
-            getTrendsUseCase().onStart {
-                _trends.value = State.Loading
-            }.catch { error ->
-                _trends.value = State.Error(error)
-            }.collect { trends ->
-                _trends.value = State.Success(trends.toUi())
-            }
-        }
-    }
+  fun getTrends() {
+      viewModelScope.launch {
+          getTrendsUseCase().onStart {
+              _trends.value = State.Loading
+          }.catch { error ->
+              _trends.value = State.Error(error)
+          }.collect { trends ->
+              _trends.value = State.Success(trends.toUi())
+          }
+      }
+  }
 }
 
 

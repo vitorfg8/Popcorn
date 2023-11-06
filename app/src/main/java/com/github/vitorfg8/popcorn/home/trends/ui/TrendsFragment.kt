@@ -31,6 +31,7 @@ class TrendsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTrendsBinding.inflate(inflater, container, false)
+        trendsViewModel.getTrends()
         setupViewPager()
         setUpTransformer()
         observeTrendsList()
