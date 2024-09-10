@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.github.vitorfg8.popcorn"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.github.vitorfg8.popcorn"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
