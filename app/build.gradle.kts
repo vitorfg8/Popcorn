@@ -3,20 +3,19 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
     id("kotlin-parcelize")
 }
 
 android {
-    namespace = AppConfig.namespace
-    compileSdk = AppConfig.compileSdk
+    namespace = "com.github.vitorfg8.popcorn"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = AppConfig.applicationId
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
+        applicationId = "com.github.vitorfg8.popcorn"
+        minSdk = 24
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -51,28 +50,28 @@ android {
 
 dependencies {
     // Core
-    implementation(Dependencies.coreKTX)
-    implementation(Dependencies.appCompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
 
     // UI
-    implementation(Dependencies.material)
-    implementation(Dependencies.constraintLayout)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
 
     // Tests
-    testImplementation(Dependencies.junit)
-    testImplementation(Dependencies.mockk)
-    androidTestImplementation(Dependencies.androidTestJunit)
-    androidTestImplementation(Dependencies.espresso)
-    testImplementation(Dependencies.coroutinesTest)
-    testImplementation(Dependencies.coreTesting)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing)
 
-    implementation(Dependencies.koin)
+    implementation(libs.koin.android)
 
-    implementation(Dependencies.glide)
+    implementation(libs.glide)
 
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.retrofitGsonConverter)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
-    implementation(Dependencies.skeletonlayout)
+    implementation(libs.skeletonlayout)
 
 }
